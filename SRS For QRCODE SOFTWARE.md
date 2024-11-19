@@ -133,9 +133,13 @@ The system comprises:
   3. The system displays the decoded content.  
 - **Postconditions**: Decoded content is displayed to the user.  
 
+#### **Use Case Diagram**
+![image](https://github.com/user-attachments/assets/f1f6752b-fca5-4f40-a457-f34985998398)
+
 ---
 
 ### **7. Data Flow Diagram**
+![image](https://github.com/user-attachments/assets/e7f59a59-77b1-4765-a277-49d2c87dd81a)
 
 #### **High-Level Data Flow**  
 1. **Input**: User inputs data for QR generation or uploads QR code for decoding.  
