@@ -26,3 +26,7 @@ Maintenance)
 ## Day 5:
 - Writing and running integration tests in Angular (Protractor)
 - Automation of end-to-end testing scenarios.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+![image](https://github.com/user-attachments/assets/2fe51a50-24c4-48eb-86a7-4b9d4a5863df)
+
