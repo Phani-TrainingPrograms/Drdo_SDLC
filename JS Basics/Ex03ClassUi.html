@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/Ex06ClassNewSyntax.js"></script>
+    <title>Document</title>
+    <style>
+        div{
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let obj = null
+        function onSave(){
+            //Get the values of the inputs
+            const pName = document.getElementById("txtName").value
+            const pAge = parseInt(document.getElementById("txtAge").value)
+            const gender = document.getElementById("slOptions").value
+            obj = new Person(pName, pAge, gender)
+            //create the object. 
+            alert("Person details are set")
+            //msg saying it is saved. 
+        }
+        
+        function onDisplay(){
+            //get the reference of the p where we want to display
+            const p1 = document.getElementById("pDetails")
+            //use the created object and fill the p inside
+            if(obj != null){
+                p1.innerText = obj.getInfo();
+            }else{
+                p1.innerText = "No details are saved with Us!!!"
+            }
+
+        }
+    </script>
+    <div>
+        <h1>Register new Person</h1>
+        <hr>
+        <p>
+            Enter the Name: <input id="txtName" placeholder="Name please!!!"/>
+        </p>
+        <p>
+            Enter the Age: <input id="txtAge" type="number"  placeholder="Age please!!!"/>
+        </p>
+        <p>
+            Select the gender: 
+            <select id="slOptions">
+                <option>Select one</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </p>
+        <p>
+            <button onclick="onSave()">Save Changes</button>
+            <button disabled onclick="onDisplay()">Display Info</button>
+        </p>
+    </div>
+    <div>
+        <h2>Details of the Entered Person</h2>
+        <hr/>
+        <p id="pDetails"></p>
+    </div>
+</body>
+</html>
