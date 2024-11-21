@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./scripts/Ex07EmpRepo.js"></script>
+    <script src="./scripts/jquery.min.js"></script>
     <link rel="stylesheet" href="Styles.css">
     <script>
         const repo = new EmpRepo()
@@ -16,10 +17,11 @@
             document.getElementById("txtSalary").value = rec.empSalary
         }
         function fillData(){
+            $("div").hide(2000);
+            $("div:first").show(2000);
             //get the data from the backend
             let records = repo.getAll();
-            let tBody = document.querySelector("tbody");
-            tBody.innerHTML = "";
+            $("tbody").remove();
             //iterate thru all the records
             for (const rec of records) {
                 const row = `<tr>
@@ -48,6 +50,28 @@
                 alert("Employee not found to update")
             }
         }
+
+        function onAddNew(){
+            const id = parseInt(document.getElementById("txtNewId").value);
+            const name = document.getElementById("txtNewName").value;
+            const addr = document.getElementById("txtNewAddress").value;
+            const sal = parseInt(document.getElementById("txtNewSalary").value);
+            const emp = new Employee(id, name, addr, sal);
+            repo.addEmployee(emp);
+            alert("Employee updated successfully")
+        }
+
+        function onAddNewLink(){
+            $("div").hide(2000);
+            $("div:eq(2)").show(2000);
+        }
+        window.addEventListener("load", ()=>{
+            // const div = document.getElementById("divAdd");
+            // div.style.display = "none";
+            $("div").fadeOut(2000);
+            $("a:first").click(fillData);
+            $("a:eq(1)").click(onAddNewLink);
+        })
     </script>
 </head>
 <body>
@@ -55,7 +79,7 @@
         <h1>Employee Monitoring System</h1>
         <hr>
         <nav>
-            <a href="#" class="link" onclick="fillData()">View All</a>
+            <a href="#" class="link">View All</a>
             <a href="#" class="link">Add New</a>
             <a href="#" class="link">About Us</a>
         </nav>
@@ -87,6 +111,20 @@
                 <p>Emp Salary: <input id="txtSalary" placeholder="Employee Salary"/> </p>
                 <p>
                     <button onclick="onSaveChanges()">Save changes</button>
+                    <button>Cancel</button>
+                </p>
+            </section>
+        </div>
+        <div id="divAdd">
+            <h2>Add Employee</h2>
+            <hr>
+            <section>
+                <p>Emp Id: <input id="txtNewId" placeholder="Employee Id"/> </p>
+                <p>Emp Name: <input id="txtNewName" placeholder="Employee Name"/> </p>
+                <p>Emp Address: <input id="txtNewAddress" placeholder="Employee Address"/> </p>
+                <p>Emp Salary: <input id="txtNewSalary" placeholder="Employee Salary"/> </p>
+                <p>
+                    <button onclick="onAddNew()">Register</button>
                     <button>Cancel</button>
                 </p>
             </section>
