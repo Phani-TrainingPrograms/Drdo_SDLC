@@ -18,24 +18,36 @@
         function fillData(){
             //get the data from the backend
             let records = repo.getAll();
-            //get the reference of the table
-            let table = document.querySelector("table");
+            let tBody = document.querySelector("tbody");
+            tBody.innerHTML = "";
             //iterate thru all the records
             for (const rec of records) {
                 const row = `<tr>
                     <td>${rec.empId}</td>
                     <td>${rec.empName}</td>
                     <td>${rec.empAddress}</td>
+                    <td>${rec.empSalary}</td>
                     <td>
                         <a href="#" onclick= "getRec(${rec.empId})">Edit</a>
                         <a href="#">X</a>
                     </td></tr>`
-                table.innerHTML += row
+                tBody.innerHTML += row
             }
             //add row for each record
             //fill the columns of the row with the record data
         }
-
+        function onSaveChanges(){
+            const id = parseInt(document.getElementById("txtId").value);
+            const name = document.getElementById("txtName").value;
+            const addr = document.getElementById("txtAddress").value;
+            const sal = parseInt(document.getElementById("txtSalary").value);
+            const emp = new Employee(id, name, addr, sal);
+            if(repo.updateEmp(emp))
+                alert("Employee updated successfully")
+            else{
+                alert("Employee not found to update")
+            }
+        }
     </script>
 </head>
 <body>
@@ -56,9 +68,13 @@
                         <th>Emp ID</th>
                         <th>Emp Name</th>
                         <th>Emp Address</th>
+                        <th>Emp Salary</th>
                         <th>Options</th>
                     </tr>
                 </thead>
+                <tbody>
+
+                </tbody>
             </table>
         </div>
         <div>
@@ -70,7 +86,7 @@
                 <p>Emp Address: <input id="txtAddress" placeholder="Employee Address"/> </p>
                 <p>Emp Salary: <input id="txtSalary" placeholder="Employee Salary"/> </p>
                 <p>
-                    <button>Save changes</button>
+                    <button onclick="onSaveChanges()">Save changes</button>
                     <button>Cancel</button>
                 </p>
             </section>

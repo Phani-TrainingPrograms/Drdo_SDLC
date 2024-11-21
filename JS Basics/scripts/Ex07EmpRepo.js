@@ -26,7 +26,7 @@ class EmpRepo{
         }
     }
     saveRecords(){
-        window.localStorage.setItem("values", this.empList);
+        window.localStorage.setItem("values", JSON.stringify(this.empList));
     }
     //addEmployee = (emp) => this.empList.push(emp)
     addEmployee = (emp) => {
@@ -49,11 +49,11 @@ class EmpRepo{
         //use splice method...
         const index = this.empList.findIndex((e) => e.empId == emp.empId);
         if(index < 0){
-            alert("No record found to update");
-            return;
+            return false;
         }
         this.empList.splice(index, 1, emp);
         this.saveRecords();
+        return true
     }
 
     deleteEmp = (id) =>{
