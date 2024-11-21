@@ -16,4 +16,18 @@ div{
     margin: 20px;
     border: 2px dashed blue;
     padding: 5px;
+    vertical-align: top;
+}
+nav{
+    text-align: center;
+    background-color: cadetblue;
+    padding: 15px;
+}
+a.link{
+    background-color: lightgoldenrodyellow;
+    padding: 5px;
+}
+a:hover{
+    background-color: cadetblue;
+    color : lightgoldenrodyellow;
 }

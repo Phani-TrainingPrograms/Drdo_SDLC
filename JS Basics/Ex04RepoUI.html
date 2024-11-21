@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./scripts/Ex07EmpRepo.js"></script>
+    <link rel="stylesheet" href="Styles.css">
+    <script>
+        const repo = new EmpRepo()
+        function getRec(id){
+            let rec = repo.getById(id);
+            document.getElementById("txtId").value = rec.empId
+            document.getElementById("txtName").value = rec.empName
+            document.getElementById("txtAddress").value = rec.empAddress
+            document.getElementById("txtSalary").value = rec.empSalary
+        }
+        function fillData(){
+            //get the data from the backend
+            let records = repo.getAll();
+            //get the reference of the table
+            let table = document.querySelector("table");
+            //iterate thru all the records
+            for (const rec of records) {
+                const row = `<tr>
+                    <td>${rec.empId}</td>
+                    <td>${rec.empName}</td>
+                    <td>${rec.empAddress}</td>
+                    <td>
+                        <a href="#" onclick= "getRec(${rec.empId})">Edit</a>
+                        <a href="#">X</a>
+                    </td></tr>`
+                table.innerHTML += row
+            }
+            //add row for each record
+            //fill the columns of the row with the record data
+        }
+
+    </script>
+</head>
+<body>
+    <article>
+        <h1>Employee Monitoring System</h1>
+        <hr>
+        <nav>
+            <a href="#" class="link" onclick="fillData()">View All</a>
+            <a href="#" class="link">Add New</a>
+            <a href="#" class="link">About Us</a>
+        </nav>
+        <div>
+            <h2>List of Employees</h2>
+            <hr>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Emp ID</th>
+                        <th>Emp Name</th>
+                        <th>Emp Address</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div>
+            <h2>Edit/View Employee</h2>
+            <hr>
+            <section>
+                <p>Emp Id: <input id="txtId" placeholder="Employee Id"/> </p>
+                <p>Emp Name: <input id="txtName" placeholder="Employee Name"/> </p>
+                <p>Emp Address: <input id="txtAddress" placeholder="Employee Address"/> </p>
+                <p>Emp Salary: <input id="txtSalary" placeholder="Employee Salary"/> </p>
+                <p>
+                    <button>Save changes</button>
+                    <button>Cancel</button>
+                </p>
+            </section>
+        </div>
+    </article>
+</body>
+</html>
