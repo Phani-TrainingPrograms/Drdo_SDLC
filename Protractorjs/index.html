@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+</head>
+<body>
+    <div>
+    <h1>Shopping Cart</h1>
+    <label for="item">Item: </label>
+    <input type="text" id="item" placeholder="Enter the Item name"/>
+
+    <label for="quantity">Quantity: </label>
+    <input type="number" id="quantity" placeholder="Enter quantity"/>
+
+    <button id="addItem">Add to Cart</button>
+    </div>
+    
+    <div>
+        <h2>Cart List</h2>
+        <ul id="cart"></ul>    
+    </div>
+    <script>
+        document.getElementById("addItem").addEventListener("click", function(){
+            const item = document.getElementById("item").value;
+            const quantity = document.getElementById("quantity").value;
+            if(item && quantity){
+                const cart = document.getElementById('cart');
+                const li = document.createElement("li");
+                li.textContent = `${quantity} x ${item}`;
+                cart.appendChild(li);
+                document.getElementById("item"). value= "";
+                document.getElementById("quantity"). value= "";
+            }
+        })
+    </script>
+</body>
+</html>

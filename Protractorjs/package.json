@@ -1,0 +1,18 @@
+{
+  "name": "protractorjs",
+  "version": "1.0.0",
+  "description": "- Its a Framework for developing E2e testing for Web Applications that use JS as their client side environment. \r - It is open source and can be used for testing browser behaviors and function behaviors using Jasmine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "protractor": "^7.0.0"
+  },
+  "dependencies": {
+    "gecko": "^0.0.0"
+  }
+}
